@@ -6,7 +6,7 @@
 #include <fstream>
 using namespace std;
 
-void printFile1( string &filename){
+void printFile1(string &filename) {
     ifstream file(filename);
     cout << "\n----------" << filename << "----------" << endl;
     string line;
@@ -17,7 +17,7 @@ void printFile1( string &filename){
     cout << "\n";
 }
 
-void appendtoFile1(string& filename) {
+void appendtoFile1(string &filename) {
     char delimiter = '/';
     string str;
     char ans;
@@ -36,7 +36,7 @@ void appendtoFile1(string& filename) {
     }
 }
 
-void rearrangeChars1( string& filename) {
+void rearrangeChars1(string &filename) {
     string outputfilename = "output1.txt";
     ifstream infile(filename);
     ofstream outfile(outputfilename);
@@ -65,7 +65,7 @@ void rearrangeChars1( string& filename) {
     rename(outputfilename.c_str(), filename.c_str());
 }
 
-void copyOddLines1( string& filename) {
+void copyOddLines1(string &filename) {
     string outputfilename = "createdFile.txt";
     ifstream infile(filename);
     ofstream outfile(outputfilename);
@@ -80,7 +80,7 @@ void copyOddLines1( string& filename) {
     outfile.close();
 }
 
-void removeCharFromFile1( string& filename) {
+void removeCharFromFile1(string &filename) {
     char c;
     cout << "Changing entered file and creating new file..." << endl;
     cout << "Enter the character to remove in created file: ";
@@ -100,7 +100,7 @@ void removeCharFromFile1( string& filename) {
     rename(outputfilename.c_str(), filename.c_str());
 }
 
-void createFile1( string& filename) {
+void createFile1(string &filename) {
     ofstream file(filename);
     file.close();
     cout << "File " << filename << " has been successfully created!" << endl;
