@@ -4,7 +4,7 @@
 #include <cstdio>
 #include <stdio.h>
 using namespace std;
-
+//виведення вмісту файлу
 void printFile(const char* filename) {
     FILE* filePtr = fopen(filename, "r");
     printf("\n----------%s----------\n",filename);
@@ -15,7 +15,7 @@ void printFile(const char* filename) {
     fclose(filePtr);
     printf("\n");
 }
-
+//додавання нових записів й файл
 void appendtoFile(const char* filename) {
     char delimiter = '/';
     char str[1000]; 
@@ -39,7 +39,7 @@ void appendtoFile(const char* filename) {
         printFile(filename);
     }
 }
-
+//шифрування даних файлу
 void rearrangeChars(const char* filename) {
     char outputfilename[]="output1.txt";
     FILE* filePtr = fopen(filename, "r");
@@ -47,14 +47,11 @@ void rearrangeChars(const char* filename) {
     char line[1000];
     while (fgets(line, 1000, filePtr)) {
         int len = strlen(line);
-        if (len > 0 && line[len-1] == '\n') {
-            line[--len] = '\0'; 
-        }
         char evenCh[1000/2];
         char oddCh[1000/2];
         int evenIn = 0;
         int oddIn = 0;
-        for (int i = 0; i < len; i++) {
+        for (int i = 0; i < len-1; i++) {
             if (i % 2 == 1) {
                 evenCh[evenIn++] = line[i];
             } else {
@@ -70,7 +67,7 @@ void rearrangeChars(const char* filename) {
     remove(filename);
     rename(outputfilename, filename);
 }
-
+//копіювання строк парної довжини у новий файл
 void copyOddLines(const char* filename) {
     char outputfilename[]="createdFile.txt";
     FILE* filePtr = fopen(filename, "r");
@@ -88,7 +85,7 @@ void copyOddLines(const char* filename) {
     fclose(filePtr);
     fclose(outputfilePtr);
 }
-
+//видалення введеного символу з файлу
 void removeCharFromFile(const char* filename) {
     char c;
     printf("Changing entered file and creatiing new file...\n");
@@ -110,13 +107,13 @@ void removeCharFromFile(const char* filename) {
     remove(filename);
     rename(outputfilename, filename);
 }
-
+//створення нового файлу
 void createFile(const char* filename){
     FILE* filePtr = fopen(filename, "w");
     fclose(filePtr);
     printf("File %s has been successfully created!\n",filename);
 }
-
+//обробка файлу згідно умов завдання
 void fileProcessing() {
     char filename[50];
     printf("Enter name of the file without extension: ");

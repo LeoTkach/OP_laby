@@ -5,7 +5,7 @@
 #include <stdio.h>
 #include <fstream>
 using namespace std;
-
+//виведення вмісту файлу
 void printFile1(string &filename) {
     ifstream file(filename);
     cout << "\n----------" << filename << "----------" << endl;
@@ -16,7 +16,7 @@ void printFile1(string &filename) {
     file.close();
     cout << "\n";
 }
-
+//додавання нових записів й файл
 void appendtoFile1(string &filename) {
     char delimiter = '/';
     string str;
@@ -35,7 +35,7 @@ void appendtoFile1(string &filename) {
         printFile1(filename);
     }
 }
-
+//шифрування даних файлу
 void rearrangeChars1(string &filename) {
     string outputfilename = "output1.txt";
     ifstream infile(filename);
@@ -44,10 +44,6 @@ void rearrangeChars1(string &filename) {
     string line;
     while (getline(infile, line)) {
         int len = line.length();
-        if (len > 0 && line[len-1] == '\n') {
-            line.erase(len-1);
-        }
-
         string evenCh;
         string oddCh;
         for (int i = 0; i < len; i++) {
@@ -64,7 +60,7 @@ void rearrangeChars1(string &filename) {
     remove(filename.c_str());
     rename(outputfilename.c_str(), filename.c_str());
 }
-
+//копіювання строк парної довжини у новий файл
 void copyOddLines1(string &filename) {
     string outputfilename = "createdFile.txt";
     ifstream infile(filename);
@@ -79,7 +75,7 @@ void copyOddLines1(string &filename) {
     infile.close();
     outfile.close();
 }
-
+//видалення введеного символу з файлу
 void removeCharFromFile1(string &filename) {
     char c;
     cout << "Changing entered file and creating new file..." << endl;
@@ -99,13 +95,13 @@ void removeCharFromFile1(string &filename) {
     remove(filename.c_str());
     rename(outputfilename.c_str(), filename.c_str());
 }
-
+//створення нового файлу
 void createFile1(string &filename) {
     ofstream file(filename);
     file.close();
     cout << "File " << filename << " has been successfully created!" << endl;
 }
-
+//обробка файлу згідно умов завдання
 void fileProcessing1() {
     string filename;
     cout << "Enter name of the file without extension: ";
