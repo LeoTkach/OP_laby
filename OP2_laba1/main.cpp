@@ -1,6 +1,7 @@
 #include "fPointer.h"
 #include "fStream.h"
 using namespace std;
+
 int main(int argc, char* argv[]) {
     if (argc != 3. || strcmp(argv[1], "-mode") ){
         cout << "Enter the command line mode: -mode FilePointer (FileStream)";

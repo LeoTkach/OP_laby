@@ -2,9 +2,9 @@
 #include <iostream>
 #include <cstring>
 #include <cstdio>
-#include <stdio.h>
 #include <fstream>
 using namespace std;
+
 //виведення вмісту файлу
 void printFile1(string &filename);
 //додавання нових записів й файл

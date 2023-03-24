@@ -2,8 +2,8 @@
 #include <iostream>
 #include <cstring>
 #include <cstdio>
-#include <stdio.h>
 using namespace std;
+
 //виведення вмісту файлу
 void printFile(const char* filename) {
     FILE* filePtr = fopen(filename, "r");
