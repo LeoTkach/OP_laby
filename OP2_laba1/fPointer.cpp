@@ -92,7 +92,6 @@ void removeCharFromFile(const char* filename) {
     printf("Enter the character to remove in created file: ");
     cin.ignore();
     scanf("%c",&c);
-    // cin >> c;
     char outputfilename[]="output3.txt";
     FILE* filePtr = fopen(filename, "r");
     FILE* outputfilePtr = fopen(outputfilename, "w");  
