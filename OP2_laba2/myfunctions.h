@@ -14,8 +14,8 @@ struct Date{
 
 struct Car{
     string name;
-    Date makedate;
-    Date selldate; 
+    Date manudate;
+    Date recepdate; 
 };
 
 void createFile(string &filename);
