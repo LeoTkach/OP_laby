@@ -117,7 +117,7 @@ void addCarToBinaryFile(string &filename) {
                 cin >> car.makedate.day >> car.makedate.month >> car.makedate.year;
             }while(isDateValid(car.makedate.day, car.makedate.month, car.makedate.year)==false);
             do{
-                cout << "Enter the date of sale (day month year): ";
+                cout << "Enter the date of reception (day month year): ";
                 cin >> car.selldate.day >> car.selldate.month >> car.selldate.year;
             }while(isDateValid(car.selldate.day, car.selldate.month, car.selldate.year, car.makedate.day, car.makedate.month, car.makedate.year)==false);
             // записываем машину в файл
@@ -146,7 +146,7 @@ void carsSoldInMonth(string &filename) {
     // cout<<"NumCars = "<<numCars<<endl;
     cout <<"\nList of cars received for sale in last month:"<<endl;
     // cout<< "Car name: " << "Date of manufacture: " << "Date of sale: " <<endl;
-    cout << setw(17) << left << "Car name" << setw(20) << right << "Manufacture date" << setw(19) << right << "Reception date" << endl;
+    cout << setw(20) << left << "Car name" << setw(17) << right << "Manufacture date" << setw(19) << right << "Reception date" << endl;
     while (file.read(reinterpret_cast<char*>(&car.namelength), sizeof(int))) {
         char* nameBuffer = new char[car.namelength + 1];
         file.read(nameBuffer, car.namelength);
@@ -159,8 +159,8 @@ void carsSoldInMonth(string &filename) {
         // check if car was sold in the given month and output its info
         if ((car.selldate.month == currentDate.month)&&(car.selldate.year == currentDate.year)) {
             cout << setw(24) << left << car.name 
-            << setw(2) << right << car.makedate.day << "." << setw(2) << right << car.makedate.month << "." << car.makedate.year
-            << setw(14) << right << car.selldate.day << "." << setw(2) << right << car.selldate.month << "." << car.selldate.year << endl;
+        << setw(2) << right << car.makedate.day << "." << setw(2) << right << car.makedate.month << "." << setw(4) << right << car.makedate.year
+        << setw(14) << right << car.selldate.day << "." << setw(2) << right << car.selldate.month << "." << setw(4) << right << car.selldate.year << endl;
         }
     }
     file.close();
@@ -175,7 +175,7 @@ void carsReleasedMoreThanYear(string &filename) {
     Car car;
     cout <<"\nList of the cars released more than a year before coming to sale:"<<endl;
     // cout<< "Car name: " << "Date of manufacture: " << "Date of sale: " <<endl;
-    cout << setw(17) << left << "Car name" << setw(20) << right << "Manufacture date" << setw(19) << right << "Reception date" << endl;
+    cout << setw(20) << left << "Car name" << setw(17) << right << "Manufacture date" << setw(19) << right << "Reception date" << endl;
     while (file.read(reinterpret_cast<char*>(&car.namelength), sizeof(int))) {
         char* nameBuffer = new char[car.namelength + 1];
         file.read(nameBuffer, car.namelength);
@@ -188,8 +188,8 @@ void carsReleasedMoreThanYear(string &filename) {
         // check if car was sold in the given month and output its info
         if (car.selldate.year - car.makedate.year > 1) {
             cout << setw(24) << left << car.name 
-            << setw(2) << right << car.makedate.day << "." << setw(2) << right << car.makedate.month << "." << car.makedate.year
-            << setw(14) << right << car.selldate.day << "." << setw(2) << right << car.selldate.month << "." << car.selldate.year << endl;
+        << setw(2) << right << car.makedate.day << "." << setw(2) << right << car.makedate.month << "." << setw(4) << right << car.makedate.year
+        << setw(14) << right << car.selldate.day << "." << setw(2) << right << car.selldate.month << "." << setw(4) << right << car.selldate.year << endl;
         }
     }
     file.close();
