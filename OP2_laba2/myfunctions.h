@@ -16,7 +16,6 @@ struct Car{
     string name;
     Date makedate;
     Date selldate; 
-    int namelength=name.size();
 };
 
 void createFile(string &filename);
