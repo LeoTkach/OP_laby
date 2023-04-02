@@ -15,7 +15,6 @@ void createFile(string &filename) {
 void readCarsFromBinaryFile(string &filename) {
     ifstream file(filename, ios::binary);
     Car car;
-    // cout<< "Car name: " << "Date of manufacture: " << "Date of sale: " <<endl;
     cout << setw(20) << left << "Car name" << setw(17) << right << "Manufacture date" << setw(19) << right << "Reception date" << endl;
     int namelength=car.name.size();
     while (file.read(reinterpret_cast<char*>(&namelength), sizeof(int))) {
@@ -31,8 +30,6 @@ void readCarsFromBinaryFile(string &filename) {
         cout << setw(24) << left << car.name 
         << setw(2) << right << car.makedate.day << "." << setw(2) << right << car.makedate.month << "." << setw(4) << right << car.makedate.year
         << setw(14) << right << car.selldate.day << "." << setw(2) << right << car.selldate.month << "." << setw(4) << right << car.selldate.year << endl;
-
-        // cout << endl;
         namelength=car.name.size();
     }
     file.close();
@@ -46,7 +43,6 @@ Date getCurrentDate() {
     currentDate.day = (*currentTime).tm_mday;
     currentDate.month = (*currentTime).tm_mon + 1;
     currentDate.year = (*currentTime).tm_year + 1900;
-
     return currentDate;
 }
 
@@ -55,7 +51,6 @@ bool isDateValid(int day, int month, int year, int day1=0, int month1=0, int yea
         cout<<"Wrong date!"<<endl;
         return false;
     }
-    // cout<< day1<< "   "<< month1<< endl;
     int maxDay = 31;
     if (month == 4 || month == 6 || month == 9 || month == 11) {
         maxDay = 30;
@@ -66,7 +61,6 @@ bool isDateValid(int day, int month, int year, int day1=0, int month1=0, int yea
             maxDay = 28;
         }
     }
-
     if (day < 1 || day > maxDay) {
         cout<<"Wrong date!"<<endl;
         return false;
@@ -124,30 +118,26 @@ void addCarToBinaryFile(string &filename) {
             }while(isDateValid(car.selldate.day, car.selldate.month, car.selldate.year, car.makedate.day, car.makedate.month, car.makedate.year)==false);
             // записываем машину в файл
             // сначала записываем длину имени машины
-            int nameLength = car.name.length();
-            file.write(reinterpret_cast<const char*>(&nameLength), sizeof(int));
+            int namelength = car.name.size();
+            file.write(reinterpret_cast<const char*>(&namelength), sizeof(int));
             // затем записываем само имя
-            file.write(car.name.c_str(), nameLength);
+            file.write(car.name.c_str(), namelength);
             // затем записываем даты
             file.write(reinterpret_cast<const char*>(&car.makedate), sizeof(Date));
             file.write(reinterpret_cast<const char*>(&car.selldate), sizeof(Date));
 
             cout << "\nCar successfully added to the file " << filename << "\n" << endl;
             file.close();
-        }
-        
+        }  
     }while(ans=='y');
 }
 
 void carsSoldInMonth(string &filename) {
     Date currentDate = getCurrentDate();
-
     ifstream file(filename, ios::binary);
     // read cars from file and output those sold in the given month
     Car car;
-    // cout<<"NumCars = "<<numCars<<endl;
     cout <<"\nList of cars received for sale in last month:"<<endl;
-    // cout<< "Car name: " << "Date of manufacture: " << "Date of sale: " <<endl;
     cout << setw(20) << left << "Car name" << setw(17) << right << "Manufacture date" << setw(19) << right << "Reception date" << endl;
     int namelength=car.name.size();
     while (file.read(reinterpret_cast<char*>(&namelength), sizeof(int))) {
@@ -158,7 +148,6 @@ void carsSoldInMonth(string &filename) {
         delete[] nameBuffer;
         file.read(reinterpret_cast<char*>(&car.makedate), sizeof(Date));
         file.read(reinterpret_cast<char*>(&car.selldate), sizeof(Date));
-        // cout<<car.selldate.day<<" "<<car.selldate.month<<" "<<car.selldate.year<<endl;
         // check if car was sold in the given month and output its info
         if ((car.selldate.month == currentDate.month)&&(car.selldate.year == currentDate.year)) {
             cout << setw(24) << left << car.name 
@@ -168,17 +157,13 @@ void carsSoldInMonth(string &filename) {
         namelength=car.name.size();
     }
     file.close();
-
 }
 
 void carsReleasedMoreThanYear(string &filename) {
-    // Date currentDate = getCurrentDate();
     ifstream file(filename, ios::binary);
-
     // read cars from file and output those sold in the given month
     Car car;
     cout <<"\nList of the cars released more than a year before coming to sale:"<<endl;
-    // cout<< "Car name: " << "Date of manufacture: " << "Date of sale: " <<endl;
     cout << setw(20) << left << "Car name" << setw(17) << right << "Manufacture date" << setw(19) << right << "Reception date" << endl;
     int namelength=car.name.size();
     while (file.read(reinterpret_cast<char*>(&namelength), sizeof(int))) {
@@ -189,7 +174,6 @@ void carsReleasedMoreThanYear(string &filename) {
         delete[] nameBuffer;
         file.read(reinterpret_cast<char*>(&car.makedate), sizeof(Date));
         file.read(reinterpret_cast<char*>(&car.selldate), sizeof(Date));
-        // cout<<car.selldate.day<<" "<<car.selldate.month<<" "<<car.selldate.year<<endl;
         // check if car was sold in the given month and output its info
         if (car.selldate.year - car.makedate.year > 1) {
             cout << setw(24) << left << car.name 
@@ -199,7 +183,6 @@ void carsReleasedMoreThanYear(string &filename) {
         namelength=car.name.size();
     }
     file.close();
-
 }
 
 //обробка файлу згідно умов завдання
