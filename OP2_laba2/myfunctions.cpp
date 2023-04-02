@@ -17,10 +17,11 @@ void readCarsFromBinaryFile(string &filename) {
     Car car;
     // cout<< "Car name: " << "Date of manufacture: " << "Date of sale: " <<endl;
     cout << setw(20) << left << "Car name" << setw(17) << right << "Manufacture date" << setw(19) << right << "Reception date" << endl;
-    while (file.read(reinterpret_cast<char*>(&car.namelength), sizeof(int))) {
-        char* nameBuffer = new char[car.namelength + 1];
-        file.read(nameBuffer, car.namelength);
-        nameBuffer[car.namelength] = '\0';
+    int namelength=car.name.size();
+    while (file.read(reinterpret_cast<char*>(&namelength), sizeof(int))) {
+        char* nameBuffer = new char[namelength + 1];
+        file.read(nameBuffer, namelength);
+        nameBuffer[namelength] = '\0';
         car.name = nameBuffer;
         delete[] nameBuffer;
 
@@ -32,6 +33,7 @@ void readCarsFromBinaryFile(string &filename) {
         << setw(14) << right << car.selldate.day << "." << setw(2) << right << car.selldate.month << "." << setw(4) << right << car.selldate.year << endl;
 
         // cout << endl;
+        namelength=car.name.size();
     }
     file.close();
 }
@@ -147,10 +149,11 @@ void carsSoldInMonth(string &filename) {
     cout <<"\nList of cars received for sale in last month:"<<endl;
     // cout<< "Car name: " << "Date of manufacture: " << "Date of sale: " <<endl;
     cout << setw(20) << left << "Car name" << setw(17) << right << "Manufacture date" << setw(19) << right << "Reception date" << endl;
-    while (file.read(reinterpret_cast<char*>(&car.namelength), sizeof(int))) {
-        char* nameBuffer = new char[car.namelength + 1];
-        file.read(nameBuffer, car.namelength);
-        nameBuffer[car.namelength] = '\0';
+    int namelength=car.name.size();
+    while (file.read(reinterpret_cast<char*>(&namelength), sizeof(int))) {
+        char* nameBuffer = new char[namelength + 1];
+        file.read(nameBuffer, namelength);
+        nameBuffer[namelength] = '\0';
         car.name = nameBuffer;
         delete[] nameBuffer;
         file.read(reinterpret_cast<char*>(&car.makedate), sizeof(Date));
@@ -162,6 +165,7 @@ void carsSoldInMonth(string &filename) {
         << setw(2) << right << car.makedate.day << "." << setw(2) << right << car.makedate.month << "." << setw(4) << right << car.makedate.year
         << setw(14) << right << car.selldate.day << "." << setw(2) << right << car.selldate.month << "." << setw(4) << right << car.selldate.year << endl;
         }
+        namelength=car.name.size();
     }
     file.close();
 
@@ -176,10 +180,11 @@ void carsReleasedMoreThanYear(string &filename) {
     cout <<"\nList of the cars released more than a year before coming to sale:"<<endl;
     // cout<< "Car name: " << "Date of manufacture: " << "Date of sale: " <<endl;
     cout << setw(20) << left << "Car name" << setw(17) << right << "Manufacture date" << setw(19) << right << "Reception date" << endl;
-    while (file.read(reinterpret_cast<char*>(&car.namelength), sizeof(int))) {
-        char* nameBuffer = new char[car.namelength + 1];
-        file.read(nameBuffer, car.namelength);
-        nameBuffer[car.namelength] = '\0';
+    int namelength=car.name.size();
+    while (file.read(reinterpret_cast<char*>(&namelength), sizeof(int))) {
+        char* nameBuffer = new char[namelength + 1];
+        file.read(nameBuffer, namelength);
+        nameBuffer[namelength] = '\0';
         car.name = nameBuffer;
         delete[] nameBuffer;
         file.read(reinterpret_cast<char*>(&car.makedate), sizeof(Date));
@@ -191,6 +196,7 @@ void carsReleasedMoreThanYear(string &filename) {
         << setw(2) << right << car.makedate.day << "." << setw(2) << right << car.makedate.month << "." << setw(4) << right << car.makedate.year
         << setw(14) << right << car.selldate.day << "." << setw(2) << right << car.selldate.month << "." << setw(4) << right << car.selldate.year << endl;
         }
+        namelength=car.name.size();
     }
     file.close();
 
