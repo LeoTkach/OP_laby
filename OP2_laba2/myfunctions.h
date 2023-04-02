@@ -18,7 +18,7 @@ struct Car{
     Date recepdate; 
 };
 
-void createFile(string &filename);
+void createNewBinaryFile(string &filename);
 
 void readCarsFromBinaryFile(string &filename);
 
@@ -28,8 +28,8 @@ bool isDateValid(int day, int month, int year, int day1, int month1, int year1);
 
 void addCarToBinaryFile(string &filename);
 
-void carsSoldInMonth(string &filename);
+void carsReceivedInLastMonth(string &filename);
 
 void carsReleasedMoreThanYear(string &filename);
 
-void fileProcessing();
+void binaryFileProcessing();
