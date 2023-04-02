@@ -6,7 +6,7 @@
 #include <iomanip>
 using namespace std;
 
-void createFile(string &filename) {
+void createNewBinaryFile(string &filename) {
     ofstream file(filename,ios::binary);
     file.close();
     cout << "File " << filename << " has been successfully created!" << endl;
@@ -123,13 +123,14 @@ void addCarToBinaryFile(string &filename) {
             file.write(reinterpret_cast<const char*>(&car.manudate), sizeof(Date));
             file.write(reinterpret_cast<const char*>(&car.recepdate), sizeof(Date));
 
-            cout << "\nCar successfully added to the file " << filename << "\n" << endl;
+            cout << "\nCar successfully added to the file " << filename << endl;
             file.close();
+            readCarsFromBinaryFile(filename);
         }  
     }while(ans=='y');
 }
 
-void carsSoldInMonth(string &filename) {
+void carsReceivedInLastMonth(string &filename) {
     Date currentDate = getCurrentDate();
     ifstream file(filename, ios::binary);
     // read cars from file and output those sold in the given month
@@ -146,8 +147,8 @@ void carsSoldInMonth(string &filename) {
         // check if car was sold in the given month and output its info
         if ((car.recepdate.month == currentDate.month)&&(car.recepdate.year == currentDate.year)) {
             cout << setw(24) << left << car.name 
-        << setw(2) << right << car.manudate.day << "." << setw(2) << right << car.manudate.month << "." << setw(4) << right << car.manudate.year
-        << setw(14) << right << car.recepdate.day << "." << setw(2) << right << car.recepdate.month << "." << setw(4) << right << car.recepdate.year << endl;
+            << setw(2) << right << car.manudate.day << "." << setw(2) << right << car.manudate.month << "." << setw(4) << right << car.manudate.year
+            << setw(14) << right << car.recepdate.day << "." << setw(2) << right << car.recepdate.month << "." << setw(4) << right << car.recepdate.year << endl;
         }
         namelength=car.name.size();
     }
@@ -170,8 +171,8 @@ void carsReleasedMoreThanYear(string &filename) {
         // check if car was sold in the given month and output its info
         if (car.recepdate.year - car.manudate.year > 1) {
             cout << setw(24) << left << car.name 
-        << setw(2) << right << car.manudate.day << "." << setw(2) << right << car.manudate.month << "." << setw(4) << right << car.manudate.year
-        << setw(14) << right << car.recepdate.day << "." << setw(2) << right << car.recepdate.month << "." << setw(4) << right << car.recepdate.year << endl;
+            << setw(2) << right << car.manudate.day << "." << setw(2) << right << car.manudate.month << "." << setw(4) << right << car.manudate.year
+            << setw(14) << right << car.recepdate.day << "." << setw(2) << right << car.recepdate.month << "." << setw(4) << right << car.recepdate.year << endl;
         }
         namelength=car.name.size();
     }
@@ -179,7 +180,7 @@ void carsReleasedMoreThanYear(string &filename) {
 }
 
 //обробка файлу згідно умов завдання
-void fileProcessing() {
+void binaryFileProcessing() {
     string filename;
     cout << "Enter name of the file without extension: ";
     cin >> filename;
@@ -187,17 +188,17 @@ void fileProcessing() {
     ifstream file(filename,ios::binary);
     if (!file) { 
         file.close();
-        createFile(filename);
+        createNewBinaryFile(filename);
         addCarToBinaryFile(filename);
-        carsSoldInMonth(filename);
+        carsReceivedInLastMonth(filename);
         carsReleasedMoreThanYear(filename);
     } else { 
         cout << "\nFile " << filename << " already exists. " << endl;
-        cout << "\nHere is list of cars this file contains: " << endl;
+        cout << "\nHere is list of cars this binary file contains: " << endl;
         file.close();
         readCarsFromBinaryFile(filename);
         addCarToBinaryFile(filename);
-        carsSoldInMonth(filename);
+        carsReceivedInLastMonth(filename);
         carsReleasedMoreThanYear(filename);
     }
 }
