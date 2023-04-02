@@ -18,12 +18,9 @@ void readCarsFromBinaryFile(string &filename) {
     cout << setw(20) << left << "Car name" << setw(17) << right << "Manufacture date" << setw(19) << right << "Reception date" << endl;
     int namelength=car.name.size();
     while (file.read(reinterpret_cast<char*>(&namelength), sizeof(int))) {
-        char* nameBuffer = new char[namelength + 1];
-        file.read(nameBuffer, namelength);
-        nameBuffer[namelength] = '\0';
-        car.name = nameBuffer;
-        delete[] nameBuffer;
-
+        string name(namelength, '\0');
+        file.read(&name[0], namelength);
+        car.name = name;
         file.read(reinterpret_cast<char*>(&car.manudate), sizeof(Date));
         file.read(reinterpret_cast<char*>(&car.recepdate), sizeof(Date));
 
@@ -141,11 +138,9 @@ void carsSoldInMonth(string &filename) {
     cout << setw(20) << left << "Car name" << setw(17) << right << "Manufacture date" << setw(19) << right << "Reception date" << endl;
     int namelength=car.name.size();
     while (file.read(reinterpret_cast<char*>(&namelength), sizeof(int))) {
-        char* nameBuffer = new char[namelength + 1];
-        file.read(nameBuffer, namelength);
-        nameBuffer[namelength] = '\0';
-        car.name = nameBuffer;
-        delete[] nameBuffer;
+        string name(namelength, '\0');
+        file.read(&name[0], namelength);
+        car.name = name;
         file.read(reinterpret_cast<char*>(&car.manudate), sizeof(Date));
         file.read(reinterpret_cast<char*>(&car.recepdate), sizeof(Date));
         // check if car was sold in the given month and output its info
@@ -167,11 +162,9 @@ void carsReleasedMoreThanYear(string &filename) {
     cout << setw(20) << left << "Car name" << setw(17) << right << "Manufacture date" << setw(19) << right << "Reception date" << endl;
     int namelength=car.name.size();
     while (file.read(reinterpret_cast<char*>(&namelength), sizeof(int))) {
-        char* nameBuffer = new char[namelength + 1];
-        file.read(nameBuffer, namelength);
-        nameBuffer[namelength] = '\0';
-        car.name = nameBuffer;
-        delete[] nameBuffer;
+        string name(namelength, '\0');
+        file.read(&name[0], namelength);
+        car.name = name;
         file.read(reinterpret_cast<char*>(&car.manudate), sizeof(Date));
         file.read(reinterpret_cast<char*>(&car.recepdate), sizeof(Date));
         // check if car was sold in the given month and output its info
