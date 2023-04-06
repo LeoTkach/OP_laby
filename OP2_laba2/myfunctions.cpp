@@ -144,14 +144,14 @@ void readCarsReceivedInLastMonth(string &filename) {
     cout << setw(20) << left << "Car name" << setw(17) << right << "Manufacture date" << setw(19) << right << "Reception date" << endl;
     int namelength=car.name.size();
     while (file.read(reinterpret_cast<char*>(&namelength), sizeof(int))) {
-        // зчитування імені
+        // зчитування імені машини
         string name(namelength, '\0');
         file.read(&name[0], namelength);
         car.name = name;
         // зчитування дат
         file.read(reinterpret_cast<char*>(&car.manudate), sizeof(Date));
         file.read(reinterpret_cast<char*>(&car.recepdate), sizeof(Date));
-        // у разі виконання вимог виведеннч на екран
+        // у разі виконання вимог виведення на екран
         if ((car.recepdate.month == currentDate.month)&&(car.recepdate.year == currentDate.year)) {
             cout << setw(24) << left << car.name 
             << setw(2) << right << car.manudate.day << "." << setw(2) << right << car.manudate.month << "." << setw(4) << right << car.manudate.year
@@ -170,14 +170,14 @@ void readCarsReleasedMoreThanYear(string &filename) {
     cout << setw(20) << left << "Car name" << setw(17) << right << "Manufacture date" << setw(19) << right << "Reception date" << endl;
     int namelength=car.name.size();
     while (file.read(reinterpret_cast<char*>(&namelength), sizeof(int))) {
-        // зчитування імені
+        // зчитування імені машини
         string name(namelength, '\0');
         file.read(&name[0], namelength);
         car.name = name;
         // зчитування дат
         file.read(reinterpret_cast<char*>(&car.manudate), sizeof(Date));
         file.read(reinterpret_cast<char*>(&car.recepdate), sizeof(Date));
-        // у разі виконання вимог виведеннч на екран
+        // у разі виконання вимог виведення на екран
         if (car.recepdate.year - car.manudate.year > 1) {
             cout << setw(24) << left << car.name 
             << setw(2) << right << car.manudate.day << "." << setw(2) << right << car.manudate.month << "." << setw(4) << right << car.manudate.year
