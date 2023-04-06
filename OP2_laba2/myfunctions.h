@@ -6,14 +6,14 @@
 #include <iomanip>
 using namespace std;
 
-// структура для збереження дат
+// структура для дат
 struct Date{
     int day;
     int month;
     int year;
 };
 
-// структура для збереження характеристик машин
+// структура для машини
 struct Car{
     string name;
     Date manudate;
