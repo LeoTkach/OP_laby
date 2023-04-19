@@ -21,7 +21,7 @@ Point::Point(const Point &p){
     y=p.y;
     // cout<<"Copy constructor!"<<endl;
 }
-// метод визначенння квадранта, якому належить точка
+// метод для визначенння квадранта системи координат, якому належить точка
 void Point::quadrantIdentification(){
     if(this->x>0 && this->y>0){
         cout<<"This point belongs to 1 quadrant."<<endl;
@@ -35,11 +35,11 @@ void Point::quadrantIdentification(){
         cout<<"This point do not belong to any quadrant"<<endl;
     }
 }
-// геттер для отримання значення координти по осі x
+// геттер для отримання значення координти точки по осі x
 int Point::get_x(){
     return x;
 }
-// геттер для отримання значення координти по осі y
+// геттер для отримання значення координти точки по осі y
 int Point::get_y(){
     return y;
 }
