@@ -19,7 +19,7 @@ int main() {
     cout<<"Calculating distance between p1 and p2"<<endl;
     cout<<"Distance between p1 and p2 is "<<p1-p2<<endl<<endl;
 
-    cout<<"Definition of the quadrant to which the p3 belongs"<<endl;
+    cout<<"Determining the quadrant to which the p3 belongs"<<endl;
     p3.quadrantIdentification();
 
     return 0;
