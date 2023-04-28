@@ -34,8 +34,5 @@ int main(){
     }
     cout<<"The total perimeter of all isosceles triangles: "<<Perim<<endl;
     cout<<"The total area of all equilateral and right triangles: "<<Square<<endl;
-    // IsoTriangle T4 (1,2,3,4,5,6);
-    // cout<<"Perimeter of triangle T2 equails: "<<T3[0].calcP()<<endl;
-    // cout<<"Square of triangle T2 equails: "<<T3[0].calcS()<<endl;
     
 }   
