@@ -22,7 +22,6 @@ double TTriangle::calcP(){
     return round((a+b+c)*100)/100;
 }
 
-
 IsoTriangle::IsoTriangle(float Ax_, float Ay_, float Bx_, float By_, float Cx_, float Cy_) {
     int flag;
     do{
@@ -62,8 +61,6 @@ EquTriangle::EquTriangle(float Ax_, float Ay_, float Bx_, float By_, float Cx_, 
         Cy=Cy_;        
     }while(flag==0);
 }
-
-
 
 RTriangle::RTriangle(float Ax_, float Ay_, float Bx_, float By_, float Cx_, float Cy_){
     int flag;
