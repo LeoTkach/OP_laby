@@ -11,7 +11,7 @@ public:
     
     TTriangle();
         
-    double calcS();
+    virtual double calcS();
     double calcP();
 };
 
@@ -23,9 +23,11 @@ public:
 class EquTriangle:public TTriangle{
 public:
     EquTriangle(float Ax_, float Ay_, float Bx_, float By_, float Cx_, float Cy_);
+    virtual double calcS();
 };
 
 class RTriangle:public TTriangle{
 public:
     RTriangle(float Ax_, float Ay_, float Bx_, float By_, float Cx_, float Cy_);
+    virtual double calcS();
 };
