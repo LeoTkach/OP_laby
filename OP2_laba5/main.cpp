@@ -37,5 +37,5 @@ int main(){
     }
     cout<<"The total perimeter of all isosceles triangles: "<<Perim<<endl;
     cout<<"The total area of all equilateral and right triangles: "<<Square<<endl;
-    
+    return 0;
 }   
