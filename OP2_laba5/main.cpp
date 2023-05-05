@@ -13,7 +13,8 @@ int main(){
         float Ax_, Ay_, Bx_, By_, Cx_, Cy_;
         cout<<"Enter coordinates of the edges of the triangle(Ax, Ay, Bx, By, Cx, Cy): ";
         cin>>Ax_>>Ay_>>Bx_>>By_>>Cx_>>Cy_;
-        Triangles[i]=new IsoTriangle (Ax_, Ay_, Bx_, By_, Cx_, Cy_);
+        IsoTriangle Tr(Ax_, Ay_, Bx_, By_, Cx_, Cy_);
+        Triangles[i]= &Tr;
         Perim+=Triangles[i]->calcP();
     }
     cout<<"Equilateral triangles: "<<endl;
@@ -21,7 +22,8 @@ int main(){
         float Ax_, Ay_, Bx_, By_, Cx_, Cy_;
         cout<<"Enter coordinates of the edges of the triangle(Ax, Ay, Bx, By, Cx, Cy): ";
         cin>>Ax_>>Ay_>>Bx_>>By_>>Cx_>>Cy_;
-        Triangles[i]=new EquTriangle (Ax_, Ay_, Bx_, By_, Cx_, Cy_);
+        EquTriangle Tr(Ax_, Ay_, Bx_, By_, Cx_, Cy_);
+        Triangles[i]= &Tr;
         Square+=Triangles[i]->calcS();
     }
     cout<<"Right triangles: "<<endl;
@@ -29,7 +31,8 @@ int main(){
         float Ax_, Ay_, Bx_, By_, Cx_, Cy_;
         cout<<"Enter coordinates of the edges of the triangle(Ax, Ay, Bx, By, Cx, Cy): ";
         cin>>Ax_>>Ay_>>Bx_>>By_>>Cx_>>Cy_;
-        Triangles[i]=new RTriangle (Ax_, Ay_, Bx_, By_, Cx_, Cy_);
+        RTriangle Tr(Ax_, Ay_, Bx_, By_, Cx_, Cy_);
+        Triangles[i]= &Tr;
         Square+=Triangles[i]->calcS();
     }
     cout<<"The total perimeter of all isosceles triangles: "<<Perim<<endl;
