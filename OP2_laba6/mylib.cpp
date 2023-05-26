@@ -20,8 +20,6 @@ T DoublyLinkedList<T>::Iterator::getValue()  {
     if (current != nullptr) {
         return current->data;
     }
-    // throw out_of_range("Iterator is at the end");
-    // cerr << "Iterator is at the end" << endl;
 }
 
 template<typename T>
@@ -58,9 +56,6 @@ bool DoublyLinkedList<T>::isEmpty()  {
 
 template<typename T>
 void DoublyLinkedList<T>::insert(const T& value, int position) {
-    // if (position < 0 || position > size) {
-    //     throw out_of_range("Invalid position");
-    // }
 
     Node* newNode = new Node(value);
 
@@ -138,7 +133,7 @@ void processDoublyLinkedList() {
     T value;
     int length;
 
-    cout << "Enter the length of the Doubly Linked List: ";
+    cout<<endl << "Enter the length of the Doubly Linked List: ";
     cin >> length;
 
     cout << "Enter the elements of the Doubly Linked List :\n";
@@ -149,7 +144,7 @@ void processDoublyLinkedList() {
     }
 
 
-    cout << "List size: " << myList.getSize() << endl;
+    cout <<endl << "List size: " << myList.getSize() << endl;
 
     cout << "List contains: " << endl;
     typename DoublyLinkedList<T>::Iterator iterator = myList.getIterator();
@@ -161,27 +156,36 @@ void processDoublyLinkedList() {
     }
     cout<< iterator.getValue()<<" ]"<<endl;
 
+    cout<<endl;
+
     int position;
-    cout << "Enter the position of an element to show its value: ";
-    cin >> position;
-    
-    if (position >= 1 && position <= myList.getSize()) {
-        T element = myList.getElementAt(position);
-        cout << "Value of an element at position " << position << " is: " << element << endl;
-    } else {
-        cout << "There is no element at position:" << position << endl;
-    }
+    do{
+        cout << "Enter the position of an element to show its value: ";
+        cin >> position;
+        
+        if (position >= 1 && position <= myList.getSize()) {
+            T element = myList.getElementAt(position);
+            cout << "Value of an element at position " << position << " is: " << element << endl;
+        } else {
+            cout << "There is no element at position: " << position << endl;
+        }
+    }while(position < 1 || position > myList.getSize());
 
+    cout<<endl;
     T searchValue;
-    cout << "Enter the value of an element to find its position: ";
-    cin >> searchValue;
-    int searchPosition = myList.findPositionOf(searchValue);
-    if (searchPosition != -1) {
-        cout << "Element " << searchValue << " found at position: " << searchPosition << endl;
-    } else {
-        cout << "Element " << searchValue << " not found in the list" << endl;
-    }
+    int searchPosition;
+    do{
+        cout << "Enter the value of an element to find its position: ";
+        cin >> searchValue;
+        searchPosition = myList.findPositionOf(searchValue);
+        if (searchPosition != -1) {
+            cout << "Element " << searchValue << " found at position: " << searchPosition << endl;
+        } else {
+            cout << "Element " << searchValue << " not found in the list" << endl;
+        }
+    }while(searchPosition==-1);
 
+    cout<<endl;
     T newEl;
     cout << "Enter the value of the new element to insert it in the list: ";
     cin >> newEl;
