@@ -132,9 +132,14 @@ void processDoublyLinkedList() {
     DoublyLinkedList<T> myList;
     T value;
     int length;
-
-    cout<<endl << "Enter the length of the Doubly Linked List: ";
-    cin >> length;
+    cout<<endl;
+    do{
+        cout << "Enter the length of the Doubly Linked List: ";
+        cin >> length;
+        if(length<=0){
+            cout<< "Length of the Doubly Linked list must be at least 1"<<endl;
+        }
+    }while(length<=0);
 
     cout << "Enter the elements of the Doubly Linked List :\n";
     for (int i = 0; i < length; ++i) {
