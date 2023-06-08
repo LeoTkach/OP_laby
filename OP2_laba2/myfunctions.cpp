@@ -121,13 +121,40 @@ void addCarToBinaryFile(string &filename) {
             // записуємо машину у файл
             // записуємо доавжину імені
             int namelength = car.name.size();
-            file.write(reinterpret_cast<const char*>(&namelength), sizeof(int));
+            file.seekp(0, std::ios::beg);
+            file.seekp(0, std::ios::beg);
+            cout << file.tellp() << endl;
+            // file.seekp(0,ios::end);
+            file.write((char*)(&namelength), sizeof(int));
             // записуємо ім'я
             file.write(car.name.c_str(), namelength);
             // записуємо дату створення та отримання для продажу
             file.write(reinterpret_cast<const char*>(&car.manudate), sizeof(Date));
             file.write(reinterpret_cast<const char*>(&car.recepdate), sizeof(Date));
-
+            cout << file.tellp() << endl;
+            string asd="ASDF";
+            do{
+                cout << "Enter the date of manufacture (day month year): ";
+                cin >> car.manudate.day >> car.manudate.month >> car.manudate.year;
+            }while(isDateValid(car.manudate.day, car.manudate.month, car.manudate.year)==false);
+            do{
+                cout << "Enter the date of reception (day month year): ";
+                cin >> car.recepdate.day >> car.recepdate.month >> car.recepdate.year;
+            }while(isDateValid(car.recepdate.day, car.recepdate.month, car.recepdate.year, car.manudate.day, car.manudate.month, car.manudate.year)==false);
+            // записуємо машину у файл
+            // записуємо доавжину імені
+            namelength = asd.size();
+            file.seekp(0, std::ios::beg);
+            file.seekp(-31, std::ios::cur);
+            cout << file.tellp() << endl;
+            // file.seekp(0,ios::end);
+            file.write(reinterpret_cast<const char*>(&namelength), sizeof(int));
+            // записуємо ім'я
+            file.write(asd.c_str(), namelength);
+            // записуємо дату створення та отримання для продажу
+            file.write(reinterpret_cast<const char*>(&car.manudate), sizeof(Date));
+            file.write(reinterpret_cast<const char*>(&car.recepdate), sizeof(Date));
+            cout << file.tellp() << endl;
             cout << "\nCar successfully added to the file " << filename << endl;
             file.close();
             readAllCarsFromBinaryFile(filename);
