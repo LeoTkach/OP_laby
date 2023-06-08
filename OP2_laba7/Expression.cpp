@@ -1,6 +1,5 @@
 #include "Expression.h"
 #include <iostream>
-#include <cmath>
 
 Expression::Expression(double nValue, double mValue) {
     if (nValue < 0) {

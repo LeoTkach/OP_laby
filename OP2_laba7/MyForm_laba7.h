@@ -38,7 +38,7 @@ namespace OP2laba7 {
 		/// <summary>
 		/// Обязательная переменная конструктора.
 		/// </summary>
-		System::ComponentModel::Container ^components;
+		System::ComponentModel::Container^ components;
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -48,5 +48,6 @@ namespace OP2laba7 {
 		void InitializeComponent(void);
 #pragma endregion
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e);
-};
+
+	};
 }

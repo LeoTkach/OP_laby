@@ -1,6 +1,5 @@
 #pragma once
 #include <iostream>
-#include <cmath>
 
 ref class Expression {
 private:
