@@ -1,0 +1,5 @@
+C:\OP_laby\OP2_laba7\x64\Debug\OP2_laba7.vcxproj.AssemblyReference.cache
+C:\OP_laby\OP2_laba7\x64\Debug\OP2_laba7.vcxproj.SuggestedBindingRedirects.cache
+C:\OP_laby\OP2_laba7\x64\Debug\OP2_laba7.exe
+C:\OP_laby\OP2_laba7\x64\Debug\OP2laba7.MyForm_laba7.resources
+C:\OP_laby\OP2_laba7\x64\Debug\OP2_laba7.vcxproj.GenerateResource.cache
