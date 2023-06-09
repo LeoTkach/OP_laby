@@ -202,7 +202,7 @@ void OP2laba7::MyForm_laba7::button1_Click(System::Object^ sender, System::Event
 		double n1, m1, n2, m2;
 		if (!Double::TryParse(textBox1->Text, n1) || !Double::TryParse(textBox2->Text, m1) ||
 			!Double::TryParse(textBox3->Text, n2) || !Double::TryParse(textBox4->Text, m2)) {
-			throw gcnew Exception("Invalid input: Please enter numeric values");
+			throw "Invalid input: Please enter numeric values";
 		}
 
 		Expression^ expr1 = gcnew Expression(n1, m1);
@@ -221,7 +221,8 @@ void OP2laba7::MyForm_laba7::button1_Click(System::Object^ sender, System::Event
 			label5->Text = "ѕерший вираз дор≥внюЇ: " + result2.ToString() + "\n" + "ƒругий вираз дор≥внюЇ: " + result1.ToString() + "\n" + "¬ирази р≥вн≥";
 		}
 	}
-	catch (Exception^ ex) {
-		MessageBox::Show(ex->Message, "Error");
+	catch (const char* ex) {
+		String^ message = gcnew String(ex);
+		MessageBox::Show(message, "Error");
 	}
 }
